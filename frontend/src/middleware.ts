@@ -1,4 +1,4 @@
-// export { auth as middleware } from '@/helper/auth';
+export { auth as middleware } from '@/helper/auth';
 
 export const config = {
   // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
