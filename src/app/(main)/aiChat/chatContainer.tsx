@@ -1,9 +1,10 @@
 "use client";
 import { useCallback, useState } from 'react';
 import { nanoid } from 'nanoid';
-import { ChatHeader } from './chatHeader';
 import { ChatMessageList, ChatMessage } from './chatMessageList';
 import { ChatInput } from './chatInput';
+import { Button } from '@/components/ui/button';
+import { RotateCcwIcon } from 'lucide-react';
 
 const models = [
   { id: 'x-ai/grok-4-fast:free', name: 'Grok 4 Fast (Free)' },
@@ -98,9 +99,14 @@ export const ChatContainer = () => {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col overflow-hidden rounded-xl border bg-background shadow-sm">
-      <ChatHeader onReset={handleReset} />
+    <div className="flex h-full w-full flex-col overflow-hidden bg-background">
       <ChatMessageList messages={messages} />
+      <div className="flex justify-end items-end px-4">
+        <Button variant="ghost" size="sm" onClick={handleReset}>
+          <RotateCcwIcon className="size-4" />
+          <span className="ml-1">Đặt lại</span>
+        </Button>
+      </div>
       <ChatInput inputValue={inputValue} setInputValue={setInputValue} handleSubmit={handleSubmit} isTyping={isTyping} selectedModel={selectedModel} setSelectedModel={setSelectedModel} models={models} />
     </div>
   );

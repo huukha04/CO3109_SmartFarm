@@ -70,7 +70,7 @@ const sampleData: Record<string, LiveData[]> = {
   if (data.length === 0) return <div className="p-4">Không có dữ liệu</div>;
 
   return (
-    <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 @xl/main:grid-cols-2 @5xl/main:grid-cols-4">
       {data.map((item) => (
         <div key={item.id} className="flex items-center gap-3 rounded-md border px-4 py-2">
           {/* Icon */}

@@ -7,6 +7,9 @@ import { HistoryTable } from "./historyTable"
 import { Button } from "@/components/ui/button"
 import { DateRange } from "react-day-picker"
 
+import { Card, CardHeader } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+
 type HistoryItem = {
   id: number
   time: string
@@ -42,28 +45,29 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex flex-row justify-between-4">
-        <div className="text-2xl font-bold">Lịch sử vườn</div>
-      </div>
+           <Card>
+        <CardHeader>
+          <div className="text-xl font-bold">Lịch sử vườn</div>
+          <Separator className="my-2"/>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full gap-4">
+              {/* Bên trái: DateRangePicker */}
+                        <DateRangePicker value={dateRange} onChange={setDateRange} />
 
-      <div className="flex flex-col px-8 py-4">
-        {/* Bộ lọc nằm trái */}
-        <div className="flex flex-wrap items-end gap-2 mb-4 w-full justify-between">
-        <div className="flex items-center gap-2 p-3 rounded-md border border-blue-400 dark:border-blue-500 shadow-sm">
-          <DateRangePicker value={dateRange} onChange={setDateRange} />
-        </div>
-        <Button
+              {/* Bên phải: Search */}
+                      <Button
           variant="outline"
           onClick={handleReset}
           className="transition-colors hover:bg-blue-50 dark:hover:bg-blue-800"
         >
           Đặt lại
         </Button>
-      </div>
+            </div>
+        </CardHeader>
+      </Card>
+              <HistoryTable data={filtered} />
 
-        {/* Bảng lịch sử */}
-        <HistoryTable data={filtered} />
-      </div>
+
+
     </>
   )
 }

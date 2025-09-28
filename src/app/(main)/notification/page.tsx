@@ -8,7 +8,8 @@ import { DateRange } from "react-day-picker";
 import { DateRangePicker } from "./dateRangePicker";
 import SearchInput from "./searchInput";
 import { Label } from "@/components/ui/label";
-
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 export type Notification = {
   id: number;
   type: "info" | "warning" | "error";
@@ -47,6 +48,17 @@ export default function Page() {
         { id: 8, type: "warning", title: "Cảnh báo 8", message: "Nội dung cảnh báo 8", time: new Date() },
         { id: 9, type: "error", title: "Lỗi 9", message: "Nội dung lỗi 9", time: new Date() },
         { id: 10, type: "info", title: "Thông báo 10", message: "Nội dung thông báo 10", time: new Date() },
+        { id: 11, type: "warning", title: "Cảnh báo 11", message: "Nội dung cảnh báo 11", time: new Date() },
+        { id: 12, type: "error", title: "Lỗi 12", message: "Nội dung lỗi 12", time: new Date() },
+        { id: 13, type: "info", title: "Thông báo 13", message: "Nội dung thông báo 13", time: new Date() },
+        { id: 14, type: "warning", title: "Cảnh báo 14", message: "Nội dung cảnh báo 14", time: new Date() },
+        { id: 15, type: "error", title: "Lỗi 15", message: "Nội dung lỗi 15", time: new Date() },
+        { id: 16, type: "info", title: "Thông báo 16", message: "Nội dung thông báo 16", time: new Date() },
+        { id: 17, type: "warning", title: "Cảnh báo 17", message: "Nội dung cảnh báo 17", time: new Date() },
+        { id: 18, type: "error", title: "Lỗi 18", message: "Nội dung lỗi 18", time: new Date() },
+        { id: 19, type: "info", title: "Thông báo 19", message: "Nội dung thông báo 19", time: new Date() },
+        { id: 20, type: "warning", title: "Cảnh báo 20", message: "Nội dung cảnh báo 20", time: new Date() },
+        { id: 21, type: "error", title: "Lỗi 21", message: "Nội dung lỗi 21", time: new Date() },
       ];
 
       setNotifications(sampleData);
@@ -88,36 +100,40 @@ export default function Page() {
 
 return (
   <>
-    <div className="flex flex-row justify-between items-center px-4">
-      <div className="text-2xl font-bold">Danh sách thông báo</div>
-    </div>
+    <Card>
+        <CardHeader>
+          <div className="text-xl font-bold">Danh sách thông báo</div>
+          <Separator className="my-2"/>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full gap-4">
+              {/* Bên trái: DateRangePicker */}
+              <div className="w-full md:w-auto">
+                <DateRangePicker value={dateRange} onChange={setDateRange} />
+              </div>
+
+              {/* Bên phải: Search */}
+              <div className="flex flex-col gap-1 w-full md:w-64">
+                <Label className="text-sm font-medium dark:text-gray-200">
+                  Tìm kiếm:
+                </Label>
+                <SearchInput
+                  value={search}
+                  onChange={setSearch}
+                  placeholder="Tìm kiếm thông báo..."
+                />
+              </div>
+            </div>
+
+
+        </CardHeader>
+      </Card>
     
-    <div className="p-4">
-      <div className="flex flex-col gap-4 p-4">
-        {/* Box: Date picker + Search */}
-        <div className="flex items-center justify-between w-full p-3 rounded-lg border border-blue-400 dark:border-blue-500 shadow-sm hover:shadow-md transition-shadow">
-          {/* Date Picker */}
-          <div className="flex-none">
-            <DateRangePicker value={dateRange} onChange={setDateRange} />
-          </div>
-
-          {/* Search Input nhỏ gọn */}
-          <div className="flex flex-col gap-1 w-64">
-            <Label className="text-sm font-medium dark:text-gray-200">
-              Tìm kiếm:
-            </Label>
-            <SearchInput
-              value={search}
-              onChange={setSearch}
-              placeholder="Tìm kiếm thông báo..."
-            />
-          </div>
-
-        </div>
+    <Card>
+      <CardContent>
+              <div className="flex flex-col gap-4">
 
         <NotificationList notifications={paginatedNotifications} />
 
-        <div className="flex flex-col px-4 mt-4 gap-2">
+        <div className="flex flex-col mt-4 gap-2">
           <PaginationWithSelect
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
@@ -127,7 +143,8 @@ return (
           />
         </div>
       </div>
-    </div>
+      </CardContent>
+    </Card>
   </>
 );
 }

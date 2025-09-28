@@ -28,7 +28,7 @@ export const ChatInput = ({
   setSelectedModel: (val: string) => void;
   models: { id: string; name: string }[];
 }) => (
-  <div className="border-t p-4">
+  <div className="p-4">
     <PromptInput onSubmit={handleSubmit}>
       <PromptInputTextarea
         value={inputValue}

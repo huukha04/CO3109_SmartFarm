@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           disableTransitionOnChange
         >
           <SessionProvider>
-            {children} {/* Nội dung các layout con (main, auth, ...) */}
+              {children} {/* Nội dung các layout con (main, auth, ...) */}
           </SessionProvider>
         </ThemeProvider>
       </body>

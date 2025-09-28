@@ -7,7 +7,11 @@ import ManualControlCard from "./ManualControlCard"
 import ScheduleCard from "./ScheduleCard"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-
+import { 
+  Card 
+, CardHeader, CardTitle
+} from "@/components/ui/components/ui/card"
+import { Separator } from "@/components/ui/separator"
 export default function GardenControlPage() {
   const [locationId, setLocationId] = useState<string>("")
   const [devices, setDevices] = useState<Device[]>([])
@@ -39,15 +43,21 @@ export default function GardenControlPage() {
   return (
     <div className="p-4 space-y-6">
       {/* Header */}
-      <div className="flex flex-row justify-between px-4">
-        <div className="text-2xl font-bold">Chăm sóc vườn</div>
-        <div className="p-3 rounded-lg border border-blue-400 dark:border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+             <Card>
+        <CardHeader>
+          <div className="text-xl font-bold">Chăm sóc vườn</div>
+          <Separator className="my-2"/>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full gap-4">
           <div className="flex flex-col gap-1">
             <label className="text-sm font-medium">Chọn khu vực</label>
             <LocationSelect locationId={locationId} onChange={setLocationId} />
           </div>
-        </div>
-      </div>
+
+              
+            </div>
+        </CardHeader>
+      </Card> 
+
 
       <Tabs defaultValue="timer" className="space-y-6">
       <TabsList className="grid w-full grid-cols-2 m-0">

@@ -75,7 +75,7 @@ export function InsertDeviceDialog({
           <div className="flex gap-2 ">
             <Button
               type="submit"
-              className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90"
+              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
             >
               Lưu
             </Button>
@@ -83,7 +83,7 @@ export function InsertDeviceDialog({
               <Button
                 type="button"
                 variant="outline"
-                className="px-4 py-2 rounded-md"
+                className="px-4 py-2 rounded-md bg-amber-500 text-white hover:bg-amber-600"
               >
                 Hủy
               </Button>
